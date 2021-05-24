@@ -1,6 +1,7 @@
 import django_heroku
 import dj_database_url
-# from decouple import config ???? 
+from decouple import config
+
 """
 Django settings for programmersBlog project.
 
@@ -26,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n%c8uu(f(+xam+2ug((&=kb_uhs@s+jvx2u7qt8np4g_-ne6#x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -132,3 +133,8 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
+
